@@ -17,7 +17,7 @@ const letters = {
   16: "You made me be gentle again. Only with you . You actually made my family jealous of you because of that hahah.",
   17: "There’s still music I can’t hear without remembering you.",
   18: "You mattered. Not just in the past. Still.",
-  19: "This isn't a question, or a memory. It's just… something that still lives in me. I miss you. What you said about doing it again and changing things — it meant something to me. My feelings haven't changed, and I'm open to trying again. But this time, I need us both to show up differently. I need to see that you're ready to build something real with me, not just fall back into old patterns. I know what I bring to the table, and I know what I need in return. I won't chase or wait indefinitely, but if you're ready to meet me in the middle and do this right... I'm here."
+  19: "This isn't a question, or a memory. It's just… something that still lives in me. I miss you. What you said about doing it again and changing things, it meant something to me. My feelings haven't changed, and I'm open to trying again. But this time, I need us both to show up differently. I need to see that you're ready to build something real with me, not just fall back into old patterns. I know what I bring to the table, and I know what I need in return. I won't chase or wait indefinitely, but if you're ready to meet me in the middle and do this right... I'm here."
 };
 
 const passwordFor19 = "First and only love";
