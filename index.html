@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Congrats Rania 🚗💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+      position: relative;
+      color: white;
+    }
+
+    /* Stars */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E") repeat;
+      animation: starsMove 120s linear infinite;
+      opacity: 0.6;
+    }
+    @keyframes starsMove {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 5000px; }
+    }
+
+    /* Hint */
+    .hint {
+      font-size: 2em;
+      text-align: center;
+      animation: floatHint 2s ease-in-out infinite alternate;
+      cursor: pointer;
+      position: absolute;
+      top: 30%;
+      z-index: 5;
+    }
+    @keyframes floatHint {
+      from { transform: translateY(0); }
+      to { transform: translateY(-15px); }
+    }
+
+    .hidden { display: none; }
+
+    /* Card Container & Flip */
+    .card-container {
+      perspective: 1000px;
+      width: 400px;
+      height: 250px;
+      position: absolute;
+      top: 35%;
+      z-index: 10;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    /* Card common styles */
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.7);
+      backface-visibility: hidden;
+      color: #000;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 2px solid #2c5282;
+      overflow: hidden;
+    }
+
+    /* Front & Back */
+    .card.back {
+      transform: rotateY(180deg);
+    }
+
+    /* Card Header */
+    .card-header {
+      background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
+      color: white;
+      padding: 8px;
+      text-align: center;
+      position: relative;
+    }
+
+    .card-header h3 {
+      margin: 0;
+      font-size: 0.9em;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .card-header p {
+      margin: 2px 0 0 0;
+      font-size: 0.7em;
+      opacity: 0.9;
+    }
+
+    .morocco-flag {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 25px;
+      height: 18px;
+      background: #c1272d;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #006233;
+      font-size: 10px;
+    }
+
+    /* Front side layout */
+    .front .card-body {
+      display: grid;
+      grid-template-columns: 80px 1fr 60px;
+      grid-template-rows: auto 1fr;
+      gap: 10px;
+      padding: 15px;
+      height: calc(100% - 60px);
+    }
+
+    .card-photo {
+      grid-row: 1 / 3;
+      width: 75px;
+      height: 90px;
+      border-radius: 4px;
+      object-fit: cover;
+      border: 2px solid #2c5282;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .personal-info {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      font-size: 0.75em;
+      line-height: 1.2;
+    }
+
+    .personal-info .field {
+      margin: 2px 0;
+      display: flex;
+    }
+
+    .personal-info .label {
+      font-weight: bold;
+      min-width: 80px;
+      color: #2c5282;
+    }
+
+    .personal-info .value {
+      flex: 1;
+    }
+
+  .signature-area {
+  grid-column: 3;
+  grid-row: 2;
+  width: 75px;       /* adjust as needed to match card layout */
+  height: 50px;      /* proportional to your 200x133 image */
+  border-radius: 4px;
+  overflow: hidden;
+  border: 2px solid #2c5282;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+}
+
+.signature-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* keeps the signature image filling the box nicely */
+}
+
+
+    .card-number {
+      position: absolute;
+      bottom: 5px;
+      left: 15px;
+      font-size: 0.6em;
+      color: #666;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Back side layout */
+    .back .card-body {
+      padding: 15px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto 1fr auto;
+      gap: 15px;
+      height: calc(100% - 60px);
+    }
+
+    .card-photo-back {
+      grid-column: 2;
+      grid-row: 1;
+      width: 60px;
+      height: 75px;
+      border-radius: 4px;
+      object-fit: cover;
+      border: 2px solid #2c5282;
+    }
+
+    .categories-section {
+      grid-column: 1 / 3;
+      grid-row: 2;
+    }
+
+    .categories-title {
+      font-size: 0.8em;
+      font-weight: bold;
+      color: #2c5282;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 4px;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .category-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.65em;
+    }
+
+    .cat {
+      width: 28px;
+      height: 20px;
+      border: 1px solid #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.7em;
+      border-radius: 3px;
+      background: #fff;
+      font-weight: bold;
+    }
+
+    .cat.checked {
+      background-color: #28a745;
+      color: white;
+      box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+    }
+
+    .dates-info {
+      grid-column: 1 / 3;
+      grid-row: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7em;
+      background: #f8f9fa;
+      padding: 8px;
+      border-radius: 4px;
+      border-left: 4px solid #2c5282;
+    }
+
+    .dates-info .date-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .dates-info .date-label {
+      font-weight: bold;
+      color: #2c5282;
+      margin-bottom: 2px;
+    }
+
+    /* Security elements */
+    .security-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.05;
+      background: repeating-linear-gradient(
+        45deg,
+        #2c5282,
+        #2c5282 2px,
+        transparent 2px,
+        transparent 10px
+      );
+      pointer-events: none;
+    }
+
+    /* Confetti */
+    canvas { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      pointer-events: none; 
+      z-index: 0; 
+    }
+
+    /* Hearts */
+    .heart {
+      position: absolute;
+      font-size: 1.5em;
+      animation: floatUp 2s ease-out forwards;
+      z-index: 8;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hint { font-size: 1.5em; }
+      .card-container { width: 320px; height: 200px; }
+      .front .card-body { grid-template-columns: 60px 1fr 45px; padding: 10px; }
+      .card-photo { width: 55px; height: 70px; }
+      .card-photo-back { width: 45px; height: 60px; }
+      .categories-grid { grid-template-columns: repeat(8, 1fr); gap: 2px; }
+      .cat { width: 22px; height: 16px; font-size: 0.6em; }
+      .personal-info { font-size: 0.65em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hint text -->
+  <div id="hint" class="hint">✨ Tap here ✨</div>
+
+  <!-- Flip card container -->
+  <div class="card-container hidden" id="cardContainer">
+    <div class="card-inner" id="cardInner">
+
+      <!-- Front Side -->
+      <div class="card front">
+        <div class="security-pattern"></div>
+        <div class="card-header">
+          <h3>ROYAUME DU MAROC</h3>
+          <p>PERMIS DE CONDUIRE</p>
+          <div class="morocco-flag">★</div>
+        </div>
+        <div class="card-body">
+          <img src="her.png" alt="Rania" class="card-photo">
+          <div class="personal-info">
+            <div class="field">
+              <span class="label"> Nom:</span>
+              <span class="value">DEQQOUN</span>
+            </div>
+            <div class="field">
+              <span class="label"> Prénom:</span>
+              <span class="value">Rania</span>
+            </div>
+            <div class="field">
+              <span class="label"> Né(e) le:</span>
+              <span class="value">21.07.2006</span>
+            </div>
+            <div class="field">
+              <span class="label"> à:</span>
+              <span class="value">Kénitra</span>
+            </div>
+            <div class="field">
+              <span class="label"> Valable jusqu'au:</span>
+              <span class="value">01.09.2033</span>
+            </div>
+            <div class="field">
+              <span class="label">5. N°:</span>
+              <span class="value">DLMA212121212</span>
+            </div>
+          </div>
+          <div class="signature-area">
+            <img src="signa.png" alt="Signature" class="signature-img">
+          </div>
+        </div>
+        <div class="card-number">DLMA212121212121DEQQOUN21</div>
+      </div>
+
+      <!-- Back Side -->
+      <div class="card back">
+        <div class="security-pattern"></div>
+        <div class="card-header">
+          <h3>ROYAUME DU MAROC</h3>
+          <p>PERMIS DE CONDUIRE</p>
+          <div class="morocco-flag">★</div>
+        </div>
+        <div class="card-body">
+         
+          
+          <div class="categories-section">
+            <div class="categories-title"> CATÉGORIES</div>
+            <div class="categories-grid">
+              <div class="category-item">
+                <div class="cat">AM</div>
+              </div>
+              <div class="category-item">
+                <div class="cat">A1</div>
+              </div>
+              <div class="category-item">
+                <div class="cat">A</div>
+              </div>
+              <div class="category-item">
+                <div class="cat checked">B</div>
+              </div>
+              <div class="category-item">
+                <div class="cat">C1</div>
+              </div>
+              <div class="category-item">
+                <div class="cat">C</div>
+              </div>
+              <div class="category-item">
+                <div class="cat">D1</div>
+              </div>
+              <div class="category-item">
+                <div class="cat">D</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dates-info">
+            <div class="date-item">
+              <div class="date-label"> Date de délivrance</div>
+              <div>01.09.2025</div>
+            </div>
+            <div class="date-item">
+              <div class="date-label"> Délivré par</div>
+              <div>Prefecture Kenitra</div>
+            </div>
+            <div class="date-item">
+              <div class="date-label">Valable jusqu'au</div>
+              <div>01.09.2033</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Confetti -->
+  <canvas id="confetti"></canvas>
+
+  <!-- Horn sound -->
+  <audio id="hornSound" preload="auto">
+    <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LGdiMFl" type="audio/wav">
+  </audio>
+
+  <script>
+    const hint = document.getElementById("hint");
+    const cardContainer = document.getElementById("cardContainer");
+    const cardInner = document.getElementById("cardInner");
+    const hornSound = document.getElementById("hornSound");
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let confetti = [];
+
+    class Confetto {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * -canvas.height;
+        this.size = 5 + Math.random() * 5;
+        this.speed = 2 + Math.random() * 3;
+        this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = Math.random() * 5 - 2.5;
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation * Math.PI / 180);
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+        ctx.restore();
+      }
+      update() {
+        this.y += this.speed;
+        this.rotation += this.rotationSpeed;
+        if (this.y > canvas.height) {
+          this.y = -10;
+          this.x = Math.random() * canvas.width;
+        }
+        this.draw();
+      }
+    }
+
+    function initConfetti() {
+      confetti = [];
+      for (let i = 0; i < 100; i++) {
+        confetti.push(new Confetto());
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      confetti.forEach(c => c.update());
+      requestAnimationFrame(animateConfetti);
+    }
+
+    // Floating hearts
+    function createHeart() {
+      const hearts = ['❤️', '💖', '🚗', '🎉', '⭐'];
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.fontSize = (15 + Math.random() * 15) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
+    }
+
+    // First tap interaction
+    hint.addEventListener("click", () => {
+      hint.style.display = "none";
+
+      // Show card container
+      cardContainer.classList.remove("hidden");
+
+      // Play celebration sound (fallback to silent if audio fails)
+      try {
+        hornSound.play().catch(() => {
+          // Fallback - create a simple beep using Web Audio API
+          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+          
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+          
+          oscillator.frequency.value = 800;
+          oscillator.type = 'sine';
+          
+          gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+          gainNode.gain.linearRampToValueAtTime(0.2, audioContext.currentTime + 0.1);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+          
+          oscillator.start(audioContext.currentTime);
+          oscillator.stop(audioContext.currentTime + 0.5);
+        });
+      } catch (e) {
+        console.log('Audio not available');
+      }
+
+      // Confetti
+      initConfetti();
+      animateConfetti();
+
+      // Floating hearts
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    });
+
+    // Flip card on click
+    cardContainer.addEventListener("click", () => {
+      const isFlipped = cardInner.style.transform === "rotateY(180deg)";
+      cardInner.style.transform = isFlipped ? "rotateY(0deg)" : "rotateY(180deg)";
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
