@@ -169,27 +169,27 @@
       flex: 1;
     }
 
-  .signature-area {
-  grid-column: 3;
-  grid-row: 2;
-  width: 75px;       /* adjust as needed to match card layout */
-  height: 50px;      /* proportional to your 200x133 image */
-  border-radius: 4px;
-  overflow: hidden;
-  border: 2px solid #2c5282;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f8f9fa;
-}
+    /* Signature area styled like photo */
+    .signature-area {
+      grid-column: 3;
+      grid-row: 2;
+      width: 75px;
+      height: 50px;  /* proportional to 200x133 image */
+      border-radius: 4px;
+      overflow: hidden;
+      border: 2px solid #2c5282;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8f9fa;
+    }
 
-.signature-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* keeps the signature image filling the box nicely */
-}
-
+    .signature-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
     .card-number {
       position: absolute;
@@ -364,30 +364,12 @@
         <div class="card-body">
           <img src="her.png" alt="Rania" class="card-photo">
           <div class="personal-info">
-            <div class="field">
-              <span class="label"> Nom:</span>
-              <span class="value">DEQQOUN</span>
-            </div>
-            <div class="field">
-              <span class="label"> Prénom:</span>
-              <span class="value">Rania</span>
-            </div>
-            <div class="field">
-              <span class="label"> Né(e) le:</span>
-              <span class="value">21.07.2006</span>
-            </div>
-            <div class="field">
-              <span class="label"> à:</span>
-              <span class="value">Kénitra</span>
-            </div>
-            <div class="field">
-              <span class="label"> Valable jusqu'au:</span>
-              <span class="value">01.09.2033</span>
-            </div>
-            <div class="field">
-              <span class="label">5. N°:</span>
-              <span class="value">DLMA212121212</span>
-            </div>
+            <div class="field"><span class="label">Nom:</span><span class="value">DEQQOUN</span></div>
+            <div class="field"><span class="label">Prénom:</span><span class="value">Rania</span></div>
+            <div class="field"><span class="label">Né(e) le:</span><span class="value">21.07.2006</span></div>
+            <div class="field"><span class="label">à:</span><span class="value">Kénitra</span></div>
+            <div class="field"><span class="label">Valable jusqu'au:</span><span class="value">01.09.2033</span></div>
+            <div class="field"><span class="label">5. N°:</span><span class="value">DLMA212121212</span></div>
           </div>
           <div class="signature-area">
             <img src="signa.png" alt="Signature" class="signature-img">
@@ -405,51 +387,23 @@
           <div class="morocco-flag">★</div>
         </div>
         <div class="card-body">
-         
-          
           <div class="categories-section">
-            <div class="categories-title"> CATÉGORIES</div>
+            <div class="categories-title">CATÉGORIES</div>
             <div class="categories-grid">
-              <div class="category-item">
-                <div class="cat">AM</div>
-              </div>
-              <div class="category-item">
-                <div class="cat">A1</div>
-              </div>
-              <div class="category-item">
-                <div class="cat">A</div>
-              </div>
-              <div class="category-item">
-                <div class="cat checked">B</div>
-              </div>
-              <div class="category-item">
-                <div class="cat">C1</div>
-              </div>
-              <div class="category-item">
-                <div class="cat">C</div>
-              </div>
-              <div class="category-item">
-                <div class="cat">D1</div>
-              </div>
-              <div class="category-item">
-                <div class="cat">D</div>
-              </div>
+              <div class="category-item"><div class="cat">AM</div></div>
+              <div class="category-item"><div class="cat">A1</div></div>
+              <div class="category-item"><div class="cat">A</div></div>
+              <div class="category-item"><div class="cat checked">B</div></div>
+              <div class="category-item"><div class="cat">C1</div></div>
+              <div class="category-item"><div class="cat">C</div></div>
+              <div class="category-item"><div class="cat">D1</div></div>
+              <div class="category-item"><div class="cat">D</div></div>
             </div>
           </div>
-
           <div class="dates-info">
-            <div class="date-item">
-              <div class="date-label"> Date de délivrance</div>
-              <div>01.09.2025</div>
-            </div>
-            <div class="date-item">
-              <div class="date-label"> Délivré par</div>
-              <div>Prefecture Kenitra</div>
-            </div>
-            <div class="date-item">
-              <div class="date-label">Valable jusqu'au</div>
-              <div>01.09.2033</div>
-            </div>
+            <div class="date-item"><div class="date-label">Date de délivrance</div><div>01.09.2025</div></div>
+            <div class="date-item"><div class="date-label">Délivré par</div><div>Prefecture Kenitra</div></div>
+            <div class="date-item"><div class="date-label">Valable jusqu'au</div><div>01.09.2033</div></div>
           </div>
         </div>
       </div>
@@ -460,16 +414,11 @@
   <!-- Confetti -->
   <canvas id="confetti"></canvas>
 
-  <!-- Horn sound -->
-  <audio id="hornSound" preload="auto">
-    <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LGdiMFl" type="audio/wav">
-  </audio>
 
   <script>
     const hint = document.getElementById("hint");
     const cardContainer = document.getElementById("cardContainer");
     const cardInner = document.getElementById("cardInner");
-    const hornSound = document.getElementById("hornSound");
     const canvas = document.getElementById("confetti");
     const ctx = canvas.getContext("2d");
 
@@ -532,37 +481,13 @@
       setTimeout(() => heart.remove(), 2000);
     }
 
-    // First tap interaction
+    // First tap interaction with congratulations
     hint.addEventListener("click", () => {
+      // 🎉 Show alert
+      alert("🎉 Congratulations, Rania! Here's your driver's license! 🚗💖");
+
       hint.style.display = "none";
-
-      // Show card container
       cardContainer.classList.remove("hidden");
-
-      // Play celebration sound (fallback to silent if audio fails)
-      try {
-        hornSound.play().catch(() => {
-          // Fallback - create a simple beep using Web Audio API
-          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          const oscillator = audioContext.createOscillator();
-          const gainNode = audioContext.createGain();
-          
-          oscillator.connect(gainNode);
-          gainNode.connect(audioContext.destination);
-          
-          oscillator.frequency.value = 800;
-          oscillator.type = 'sine';
-          
-          gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-          gainNode.gain.linearRampToValueAtTime(0.2, audioContext.currentTime + 0.1);
-          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-          
-          oscillator.start(audioContext.currentTime);
-          oscillator.stop(audioContext.currentTime + 0.5);
-        });
-      } catch (e) {
-        console.log('Audio not available');
-      }
 
       // Confetti
       initConfetti();
@@ -580,7 +505,7 @@
       cardInner.style.transform = isFlipped ? "rotateY(0deg)" : "rotateY(180deg)";
     });
 
-    // Handle window resize
+    // Resize
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
