@@ -350,20 +350,24 @@
     }
     
     // Initialize everything when page loads
-    window.addEventListener('load', () => {
-        // Stagger initialization for better visual impact
-        createFloatingRs();
-        
-        setTimeout(() => {
-            createFloatingHearts();
-        }, 200);
-        
-        setTimeout(() => {
-            startContinuousRGeneration();
-        }, 400);
-        
+    window.addEventListener('DOMContentLoaded', () => {
+        // 1. Initial Data Setup
+        initMessagePool();
         setInitialMessage();
+
+        // 2. Visual Elements (Staggered)
+        createFloatingRs();
+        setTimeout(createFloatingHearts, 200);
+        setTimeout(startContinuousRGeneration, 400);
+
+        // 3. The Bouquet Launch - Force check for the overlay
+        console.log("Launching Vault..."); 
         showInitialBouquet();
     });
+
+    // Event listener for the Remind Button
+    if (remindBtn) {
+        remindBtn.addEventListener('click', onRemindClick);
+    }
     
 })();
