@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Always You | Rania — Love Vault</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Main Vault Container -->
+    <div class="vault-container">
+        <div class="love-header">
+            <h1>Always You, Rania</h1>
+            <div class="sub">You are held, cherished, and never alone. i love you.</div>
+        </div>
+
+        <div class="message-stage" id="messageStage">
+            <div class="affirmation-card">
+                <div class="affirmation-text" id="affirmationMsg">
+                    <i>✧ your safe space ✧</i>
+                    <div class="quote-icon">❀</div>
+                    <span id="dynamicMsg">you are held, cherished, and never alone. i love you.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-row">
+            <button class="remind-btn" id="remindBtn">
+                 Remind Me 
+            </button>
+        </div>
+
+        <div class="footer-wa">
+            <a href="https://wa.me/212663126914" target="_blank" rel="noopener noreferrer">
+                 Click here for more love ❤️
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+// ========== SCRIPT.JS - ENHANCED VERSION ==========
+// Love Vault for Rania - Refined Interactive Experience
+
+(function() {
+    // ============================================
+    // PART 1: FLOATING LETTER 'R' AND HEARTS
+    // ============================================
+    
+    function createFloatingRs() {
+        const isMobile = window.matchMedia('(max-width: 600px)').matches;
+        const totalR = isMobile ? 50 : 120;
+
+        for (let i = 0; i < totalR; i++) {
+            const rElement = document.createElement('div');
+            rElement.className = 'r-float';
+            const size = Math.floor(Math.random() * (isMobile ? 16 : 24)) + (isMobile ? 12 : 16);
+            rElement.style.fontSize = size + 'px';
+            rElement.style.left = Math.random() * 100 + '%';
+            const duration = Math.random() * 8 + 10;
+            rElement.style.animationDuration = duration + 's';
+            rElement.style.animationDelay = Math.random() * 10 + 's';
+            rElement.style.opacity = Math.random() * 0.35 + 0.15;
+            rElement.innerText = 'R';
+            document.body.appendChild(rElement);
+        }
+    }
+
+    function createFloatingHearts() {
+        const isMobile = window.matchMedia('(max-width: 600px)').matches;
+        const heartCount = isMobile ? 20 : 50;
+
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = Math.random() > 0.6 ? '❤️' : '🌸';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 14 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 10 + 11) + 's';
+            heart.style.animationDelay = (Math.random() * 14) + 's';
+            heart.style.opacity = Math.random() * 0.4 + 0.15;
+            document.body.appendChild(heart);
+        }
+    }
+
+    function startContinuousRGeneration() {
+        const isMobile = window.matchMedia('(max-width: 600px)').matches;
+        const batchSize = isMobile ? 2 : 6;
+        const interval = isMobile ? 6000 : 4200;
+
+        setInterval(() => {
+            for (let i = 0; i < batchSize; i++) {
+                const rElem = document.createElement('div');
+                rElem.className = 'r-float';
+                const sizeVar = Math.floor(Math.random() * (isMobile ? 14 : 20)) + (isMobile ? 12 : 14);
+                rElem.style.fontSize = sizeVar + 'px';
+                rElem.style.left = Math.random() * 100 + '%';
+                rElem.style.animationDuration = (Math.random() * 9 + 8) + 's';
+                rElem.style.animationDelay = '0s';
+                rElem.style.opacity = Math.random() * 0.3 + 0.12;
+                rElem.innerText = 'R';
+                document.body.appendChild(rElem);
+                
+                rElem.addEventListener('animationend', () => {
+                    if (rElem.parentNode) rElem.remove();
+                });
+            }
+        }, interval);
+    }
+    
+    // ============================================
+    // PART 2: AFFIRMATION MESSAGES (Infinite loop, no repeats)
+    // ============================================
+    
+    const loveMessages = [
+    "Habibti when the world is unkind to you come to me. Come find me.",
+    "Let me hold the weight of today. You just breathe. I love every inch of who you are.",
+    "You are the love of my life. And I will spend forever showing you that.",
+    "When you feel small, remember that you take up my entire heart. There's no room for anything but you.",
+    "The way your eyes light up when you talk about your dreams that's my favorite movie. I'll never stop watching.",
+    "I wish you could see yourself the way I see you, radiant, resilient, and impossibly beautiful.",
+    "The way you draw feels like you’re translating your soul onto paper. I could stare at your art for hours and still find something new to love.",
+    "You’re not just talented, you’re rare. The way you see the world and turn it into art makes me admire you more every day.",
+    "Your art says things words never could. And somehow, every piece you make feels like a part of you I get to fall in love with.",
+    "You’re my favorite artist a Rania, not just because you’re good, but because everything you create feels alive.",
+    "The way your mind works, the way your hands bring ideas to life, it’s honestly one of the most beautiful things about you.",
+    "I love watching you create. It’s like seeing magic happen quietly, effortlessly, like it’s just who you are.",
+    "Every time you draw or paint something, I’m reminded how insanely talented you are, and how lucky I am to witness it.",
+    "Your art isn’t just beautiful, it feels real. It has emotion, depth, and that’s something not everyone has.",
+    "Rania, you don’t just make art, you create feelings. And I swear, I fall for you a little more every time I see your work.",
+    "You’re my favorite artist, always will be. Not because I have to say it, but because nothing and no one moves me the way your art does.",
+    "Some people search their whole lives for a love like this. I found it the day I met you, Rania.",
+    "Your worth is not measured by numbers or reflections. It's infinite, and I'll remind you until you believe it.",
+    "That laugh you hide, it's the melody that makes my world make sense. Let it out, my love.",
+    "You don't have to perform strength with me. I'll be strong for both of us when you're tired.",
+    "Every scar, every curve, every quiet moment I treasure them because they're yours.",
+    "Rania, you are the poetry I never knew how to write. Soft, real, and unforgettable.",
+    "I'm not asking you to be okay. I'm asking you to let me be next to you until you are.",
+    "You are allowed to retreat into yourself. I'll wait at the door with open arms. Always.",
+    "Rania, you are effortlessly beautiful. Not just in the way you look, but in the way you exist.",
+    "There’s something about you that just stays in my mind. The way you look, the way you move, the way you are, it’s all beautiful to me.",
+    "You don’t even realize how stunning you are. It’s in the little things, the way you smile, the way your eyes speak before you do.",
+    "Rania, you’re genuinely gorgeous. Not in a loud way, but in a quiet way that stays with me.",
+    "I could look at you for hours and still feel like I haven’t seen enough. That’s how beautiful you are to me.",
+    "You’re the kind of beautiful that doesn’t fade. It’s not just your face, it’s your presence, your energy, everything.",
+    "Even on the days you don’t feel it, you’re still one of the most beautiful people I’ve ever seen.",
+    "Rou7i, you don’t need anything to be more beautiful. You already are, exactly as you are right now.",
+    "There’s a softness in your beauty that makes it impossible to ignore.",
+    "You’re not just pretty, you’re captivating. The kind of beautiful that makes people stop and feel something.",
+    "That voice in your head that tells you you're not enough, it's lying. You are my enough and more.",
+    "Your presence alone makes my heart feel full. Not what you do, not how you look just you breathing.",
+    "You are not defined by that painful moment. You are defined by your kindness, your fire, and the way you love.",
+    "I choose you, messy days, quiet nights, tears, laughter, everything. No conditions.",
+    "If I could give you one gift, it would be the ability to see yourself through my eyes. You'd never doubt again.",
+    "Rest in my love tonight. You don't have to earn it. It's already yours, completely.",
+    "That insecurity you carry, it has no power here. I see only the woman I fall deeper for every sunrise.",
+    "The most attractive thing about you is your soul. And it's the most beautiful soul I've ever known.",
+    "You're not too much. You're not difficult. You're human, and you're loved beyond reason.",
+    "Every version of you, healing, breaking, glowing belongs with me. I'm not going anywhere.",
+    "Rania, you made my life softer just by existing in it. Let me return that softness to you.",
+    "You are not the hurt that was said to you. You are the warmth I come home to, even from afar.",
+    "I love you with a love that doesn't ask you to be different. Just be here. I'll handle the rest.",
+    "If the world forgets how to be gentle, I will remember for you. I will be the place where you can rest.",
+    "You don't have to shine all the time. Even your quiet, your silence, your softness is something I adore.",
+    "There is nothing about you I would trade, not your flaws, not your doubts, not even your hardest days.",
+    "When you doubt yourself, come closer to me. I will remind you of who you really are.",
+    "You are not hard to love. You are simply waiting for someone who knows how to love you right. That's me.",
+    "Even on your worst days, you are still the person I would choose without hesitation.",
+    "You are the kind of peace people spend their whole lives searching for, and I get to hold you.",
+    "I don't love you for who you could be. I love you deeply for who you already are.",
+    "Your heart is my favorite place. No matter where I am, that's where I feel at home.",
+    "You don't need to be perfect to be loved. You just need to be you, and that's more than enough for me.",
+    "If your thoughts get loud, come sit with me. We don't have to fix anything, we just have to be together.",
+    "There is a softness in you that the world didn't deserve, but I promise to protect it with everything I have.",
+    "I see the parts of you that you try to hide, and I still choose you, every single time.",
+    "You are not a burden. Loving you is the easiest, most natural thing I've ever done.",
+    "Even your tears feel sacred to me, because they belong to you, and you matter that much.",
+    "If you ever feel lost, remember this, you are always found in me.",
+    "You don't have to fight alone anymore. I am here, and I am not leaving.",
+    "Your existence alone makes my life better in ways I can't even explain.",
+    "I would choose you in every version of this life, in every timeline, in every possible world.",
+    "You are not too sensitive. You are deeply alive, and I love that about you.",
+    "If I could, I would take every harsh word you've ever heard and replace it with love until it feels real.",
+    "Being loved by you is my favorite thing. Loving you is my purpose.",
+    "You don't need to prove anything to me. You already have my whole heart.",
+    "I don't just love you when you're strong. I love you even more when you're soft and tired.",
+    "You are safe with me, always, no conditions, no exceptions."
+];
+    
+    let remainingIndices = [];
+    let isTransitioning = false;
+    const dynamicMsgSpan = document.getElementById('dynamicMsg');
+    const affirmContainer = document.getElementById('affirmationMsg');
+    const remindBtn = document.getElementById('remindBtn');
+    
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+    
+    function initMessagePool() {
+        if (remainingIndices.length === 0) {
+            remainingIndices = [...Array(loveMessages.length).keys()];
+            remainingIndices = shuffleArray(remainingIndices);
+        }
+    }
+    
+    function getNextUniqueMessage() {
+        initMessagePool();
+        const nextIndex = remainingIndices.pop();
+        return loveMessages[nextIndex];
+    }
+    
+    function updateMessageWithLove() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        const newMsg = getNextUniqueMessage();
+        const quoteIcon = document.querySelector('.quote-icon');
+        
+        // Smooth fade out
+        dynamicMsgSpan.style.transition = 'opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1)';
+        dynamicMsgSpan.style.opacity = '0';
+        
+        setTimeout(() => {
+            dynamicMsgSpan.innerText = newMsg;
+            
+            // Icon pulse animation
+            if (quoteIcon) {
+                quoteIcon.style.transform = 'scale(1.3) rotate(20deg)';
+                quoteIcon.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                setTimeout(() => {
+                    if (quoteIcon) quoteIcon.style.transform = 'scale(1) rotate(0deg)';
+                }, 200);
+            }
+            
+            // Fade in with subtle scale
+            dynamicMsgSpan.style.opacity = '1';
+            
+            // Card subtle pop
+            if (affirmContainer) {
+                affirmContainer.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                affirmContainer.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    if (affirmContainer) affirmContainer.style.transform = 'scale(1)';
+                }, 300);
+            }
+            
+            isTransitioning = false;
+        }, 200);
+    }
+    
+    function setInitialMessage() {
+        initMessagePool();
+        const firstIndex = remainingIndices.pop();
+        const firstMsg = loveMessages[firstIndex];
+        if (dynamicMsgSpan) dynamicMsgSpan.innerText = firstMsg;
+    }
+    
+    // ============================================
+    // PART 3: HIGH-FIDELITY PHOTO BOUQUET
+    // ============================================
+    
+    // IMPORTANT: Replace 'bouquet-300-roses-rouges.jpg' with your actual bouquet image path
+    // You can change this to any image URL or local path
+    const BOUQUET_IMAGE_URL = 'bouquet-300-roses-rouges.jpg';
+    // Alternative: use a local image like 'bouquet.jpg' or any rose bouquet image
+    
+    function showInitialBouquet() {
+        // Check if bouquet already exists to prevent duplicates
+        if (document.querySelector('.full-screen-bouquet')) return;
+        
+        const overlay = document.createElement('div');
+        overlay.className = 'full-screen-bouquet';
+        overlay.id = 'initial-overlay';
+
+       overlay.innerHTML = `
+    <div class="bouquet-image-container" id="imgWrapper">
+        <img src="${BOUQUET_IMAGE_URL}" class="real-bouquet-img" id="mainBouquet" alt="A beautiful bouquet of roses for you, Rania">
+    </div>
+    <div class="quote-card-initial" id="quoteCard">
+        <h2>🌹 For You, Rania 🌹</h2>
+        <p>
+            Roses remind me of you.
+            I searched for the perfect bouquet, but no flower could ever match the beauty you bring into my life.
+            Keep these roses close, just like I keep you in my heart, always loved.
+        </p>
+        <button id="takeBtn">💐 Keep These, They're Yours 💐</button>
+    </div>
+`;
+
+        document.body.appendChild(overlay);
+
+        const takeBtn = document.getElementById('takeBtn');
+        if (takeBtn) {
+            takeBtn.addEventListener('click', function() {
+                const wrapper = document.getElementById('imgWrapper');
+                const quoteCard = document.getElementById('quoteCard');
+                
+                // Phase 1: Fade out the quote and background
+                if (quoteCard) {
+                    quoteCard.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    quoteCard.style.opacity = '0';
+                }
+                
+                overlay.style.transition = 'background 0.6s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                overlay.style.background = 'transparent';
+                overlay.style.backdropFilter = 'blur(0px)';
+
+                // Get position for animation
+                const rect = wrapper.getBoundingClientRect();
+                wrapper.style.position = 'fixed';
+                wrapper.style.top = rect.top + 'px';
+                wrapper.style.left = rect.left + 'px';
+                wrapper.style.width = rect.width + 'px';
+                wrapper.style.margin = '0';
+                wrapper.style.transition = 'all 1.4s cubic-bezier(0.6, -0.28, 0.735, 0.045)';
+                
+                setTimeout(() => {
+                    wrapper.style.top = 'calc(100% - 120px)';
+                    wrapper.style.left = 'calc(100% - 110px)';
+                    wrapper.style.width = '95px';
+                    wrapper.style.transform = 'rotate(8deg)';
+                }, 50);
+
+                // Phase 2: Remove overlay and create permanent corner bouquet
+                setTimeout(() => {
+                    overlay.remove();
+                    createPermanentCornerBouquet();
+                }, 1500);
+            });
+        }
+    }
+
+    function createPermanentCornerBouquet() {
+        // Check if it already exists to prevent duplicates
+        if (document.querySelector('.bouquet-minified')) return;
+
+        const miniBouquet = document.createElement('div');
+        miniBouquet.className = 'bouquet-minified';
+        miniBouquet.innerHTML = `
+            <img src="${BOUQUET_IMAGE_URL}" style="width:100%; height:auto; border-radius: 16px; display: block;">
+        `;
+        
+        // When she clicks the corner bouquet, it brings back the big view
+        miniBouquet.onclick = (e) => {
+            e.stopPropagation();
+            miniBouquet.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            miniBouquet.style.transform = 'scale(0) rotate(-30deg)';
+            miniBouquet.style.opacity = '0';
+            setTimeout(() => {
+                miniBouquet.remove();
+                showInitialBouquet();
+            }, 400);
+        };
+        
+        document.body.appendChild(miniBouquet);
+    }
+    
+    // ============================================
+    // PART 4: EVENT LISTENERS & INITIALIZATION
+    // ============================================
+    
+    function onRemindClick() {
+        if (isTransitioning) return;
+        updateMessageWithLove();
+        
+        if (remindBtn) {
+            remindBtn.style.transform = 'scale(0.94)';
+            setTimeout(() => {
+                if (remindBtn) remindBtn.style.transform = '';
+            }, 100);
+        }
+    }
+    
+    const messageStageDiv = document.querySelector('.message-stage');
+    if (messageStageDiv) {
+        messageStageDiv.addEventListener('click', (e) => {
+            if (e.target.closest('#remindBtn')) return;
+            if (!isTransitioning) {
+                updateMessageWithLove();
+            }
+        });
+    }
+    
+    if (remindBtn) {
+        remindBtn.addEventListener('click', onRemindClick);
+    }
+    
+    // Initialize everything when page loads
+    window.addEventListener('load', () => {
+        // Stagger initialization for better visual impact
+        createFloatingRs();
+        
+        setTimeout(() => {
+            createFloatingHearts();
+        }, 200);
+        
+        setTimeout(() => {
+            startContinuousRGeneration();
+        }, 400);
+        
+        setInitialMessage();
+        showInitialBouquet();
+    });
+    
+})();
+
+
+/* ===== ENHANCED LOVE VAULT STYLESHEET ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #d4768f;
+    --primary-dark: #c05a7d;
+    --primary-light: #e8a5b7;
+    --accent: #f4a199;
+    --accent-soft: #ffd9cc;
+    --bg-main: #faf9f8;
+    --bg-card: rgba(255, 250, 248, 0.88);
+    --text-primary: #5a4a5a;
+    --text-secondary: #8a7a8a;
+    --border-color: rgba(212, 118, 143, 0.15);
+    --shadow-sm: 0 2px 8px rgba(212, 118, 143, 0.08);
+    --shadow-md: 0 8px 24px rgba(212, 118, 143, 0.12);
+    --shadow-lg: 0 20px 40px rgba(212, 118, 143, 0.15);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #faf9f8 0%, #f5f0f3 50%, #faf9f8 100%);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    color: var(--text-primary);
+    display: grid;
+    place-items: center;
+    padding: clamp(12px, 3vw, 28px);
+    position: relative;
+}
+
+/* ===== ATMOSPHERIC BLOBS ===== */
+.blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    z-index: 0;
+    mix-blend-mode: multiply;
+}
+
+.blob-1 { 
+    width: 65vw; 
+    height: 65vw; 
+    background: #d4768f; 
+    top: -25vh; 
+    left: -15vw; 
+    animation: blobDrift 15s ease-in-out infinite;
+}
+
+.blob-2 { 
+    width: 75vw; 
+    height: 75vw; 
+    background: #e8a5b7; 
+    bottom: -35vh; 
+    right: -20vw; 
+    animation: blobDrift 18s ease-in-out infinite reverse;
+}
+
+.blob-3 { 
+    width: 55vw; 
+    height: 55vw; 
+    background: #f4a199; 
+    top: 50vh; 
+    right: -5vw; 
+    animation: blobDrift 20s ease-in-out infinite;
+}
+
+@keyframes blobDrift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-20px, -30px) scale(1.05); }
+    50% { transform: translate(10px, 20px) scale(0.98); }
+    75% { transform: translate(-10px, 10px) scale(1.02); }
+}
+
+/* ===== FLOATING LETTERS & HEARTS ===== */
+.r-float {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    opacity: 0;
+    animation: floatR 12s infinite ease-in-out;
+    color: var(--primary);
+    filter: drop-shadow(0 4px 8px rgba(212, 118, 143, 0.1));
+}
+
+@keyframes floatR {
+    0% { 
+        transform: translateY(100vh) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    10% { 
+        opacity: 0.4;
+        transform: translateY(85vh) rotate(15deg) scale(1);
+    }
+    90% { 
+        opacity: 0.3;
+        transform: translateY(-5vh) rotate(-20deg) scale(0.9);
+    }
+    100% { 
+        transform: translateY(-20vh) rotate(0deg) scale(0.7);
+        opacity: 0;
+    }
+}
+
+.floating-heart {
+    position: fixed;
+    pointer-events: none;
+    animation: heartFloat 14s infinite linear;
+    z-index: 1;
+    filter: drop-shadow(0 2px 4px rgba(212, 118, 143, 0.1));
+}
+
+@keyframes heartFloat {
+    0% { 
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { 
+        opacity: 0.5;
+    }
+    85% { 
+        opacity: 0.4;
+    }
+    100% { 
+        transform: translateY(-15vh) translateX(30px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ===== MAIN CONTAINER ===== */
+.vault-container {
+    z-index: 2;
+    width: min(100%, 700px);
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1.5px solid var(--border-color);
+    border-radius: clamp(32px, 6vw, 48px);
+    padding: clamp(2rem, 5vw, 3rem);
+    box-shadow: 
+        0 0 60px rgba(212, 118, 143, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    animation: containerFadeIn 0.8s ease-out 0.2s both;
+}
+
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== HEADER ===== */
+.love-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: headerFadeIn 0.8s ease-out 0.4s both;
+}
+
+@keyframes headerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.love-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6.5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--primary-dark);
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sub {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    font-weight: 300;
+    color: var(--text-secondary);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+/* ===== MESSAGE STAGE ===== */
+.message-stage {
+    background: linear-gradient(135deg, rgba(248, 240, 245, 0.8) 0%, rgba(255, 245, 240, 0.6) 100%);
+    border: 1px solid rgba(212, 118, 143, 0.2);
+    border-radius: 28px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: stageFadeIn 0.8s ease-out 0.6s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.message-stage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(244, 161, 153, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+@keyframes stageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-stage:hover {
+    background: linear-gradient(135deg, rgba(248, 235, 245, 0.95) 0%, rgba(255, 240, 235, 0.8) 100%);
+    border-color: rgba(212, 118, 143, 0.35);
+    box-shadow: 0 12px 32px rgba(212, 118, 143, 0.15);
+    transform: translateY(-2px);
+}
+
+.affirmation-text {
+    font-size: clamp(1.05rem, 3vw, 1.4rem);
+    line-height: 1.75;
+    color: var(--text-primary);
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+}
+
+.affirmation-text i {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 300;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+.quote-icon {
+    display: inline-block;
+    font-size: 1.8rem;
+    margin: 1rem 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(212, 118, 143, 0.1));
+}
+
+#dynamicMsg {
+    display: block;
+    color: var(--text-primary);
+    font-style: italic;
+    font-weight: 300;
+    transition: opacity 0.3s ease;
+}
+
+/* ===== BUTTON ===== */
+.btn-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    animation: btnFadeIn 0.8s ease-out 0.8s both;
+}
+
+@keyframes btnFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.remind-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px rgba(212, 118, 143, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.remind-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.remind-btn:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #a8486a 100%);
+    box-shadow: 0 12px 30px rgba(212, 118, 143, 0.35);
+    transform: translateY(-2px);
+}
+
+.remind-btn:hover::before {
+    transform: translateX(100%);
+}
+
+.remind-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(212, 118, 143, 0.2);
+}
+
+/* ===== FOOTER ===== */
+.footer-wa {
+    text-align: center;
+    margin-top: 2rem;
+    animation: footerFadeIn 0.8s ease-out 1s both;
+}
+
+@keyframes footerFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.footer-wa a {
+    text-decoration: none;
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(244, 161, 153, 0.25) 0%, rgba(232, 165, 183, 0.2) 100%);
+    border: 1px solid rgba(212, 118, 143, 0.2);
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: var(--text-primary);
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-wa a:hover {
+    background: linear-gradient(135deg, rgba(244, 161, 153, 0.4) 0%, rgba(232, 165, 183, 0.35) 100%);
+    border-color: rgba(212, 118, 143, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(212, 118, 143, 0.1);
+}
+
+/* ===== FULL SCREEN BOUQUET ===== */
+.full-screen-bouquet {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(12px);
+    padding: 20px;
+    z-index: 10000;
+    animation: overlayFadeIn 0.5s ease-out;
+}
+
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.bouquet-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(88vw, 340px);
+    animation: bouquetReveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+@keyframes bouquetReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.8) rotateY(-20deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateY(0);
+    }
+}
+
+.real-bouquet-img {
+    width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(212, 118, 143, 0.3);
+    transition: all 0.4s ease;
+}
+
+.real-bouquet-img:hover {
+    transform: scale(1.02);
+}
+
+.quote-card-initial {
+    text-align: center;
+    color: white;
+    width: min(90vw, 480px);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    animation: quoteReveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s both;
+}
+
+@keyframes quoteReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quote-card-initial h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    font-weight: 700;
+    color: #f4a199;
+    letter-spacing: -0.5px;
+}
+
+.quote-card-initial p {
+    max-width: 440px;
+    margin: 0 auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+#takeBtn {
+    padding: 13px 32px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(135deg, #f4a199 0%, #ffb4a2 100%);
+    color: #5a4a5a;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px rgba(244, 161, 153, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+#takeBtn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+#takeBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(244, 161, 153, 0.4);
+}
+
+#takeBtn:hover::before {
+    transform: translateX(100%);
+}
+
+#takeBtn:active {
+    transform: translateY(0);
+}
+
+/* ===== CORNER BOUQUET ===== */
+.bouquet-minified {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 8px 16px rgba(212, 118, 143, 0.2));
+    animation: miniatureFadeIn 0.6s ease-out;
+}
+
+@keyframes miniatureFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-30deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+.bouquet-minified:hover {
+    transform: scale(1.08) rotate(4deg);
+    filter: drop-shadow(0 12px 24px rgba(212, 118, 143, 0.3));
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .love-header h1 {
+        margin-bottom: 0.3rem;
+    }
+
+    .message-stage {
+        padding: 1.5rem 1.2rem;
+        border-radius: 24px;
+    }
+
+    .affirmation-text {
+        font-size: 1.05rem;
+        line-height: 1.65;
+    }
+
+    .quote-icon {
+        font-size: 1.5rem;
+        margin: 0.8rem 0;
+    }
+
+    .bouquet-minified {
+        width: 70px;
+        height: 70px;
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .full-screen-bouquet {
+        gap: 16px;
+    }
+
+    .real-bouquet-img {
+        max-height: 220px;
+    }
+
+}
+</html>
